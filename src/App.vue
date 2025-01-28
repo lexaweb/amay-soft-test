@@ -1,27 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <slider></slider>
+    <iframeComponent></iframeComponent>
+    <iframe src="/" title="Control Panel">
+
+    </iframe>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
-
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+<script setup lang="ts">
+import slider from '@/components/slider'
+import iframeComponent from "@/components/iframeComponent"
 </script>
-
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    height: 100%;
 }
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #fff;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #3C4267;
+    margin: 0;
+    padding: 0;
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+}
+
 </style>

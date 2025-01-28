@@ -4,7 +4,12 @@ export function useMessage() {
     const store = useCarouselStore();
 
     const sendMessage = (message: object) => {
-        window.parent.postMessage(message, '*');
+        try {
+            const safeData = JSON.parse(JSON.stringify(message));
+            window.parent.postMessage(safeData, "*");
+        } catch (error) {
+            console.error("DataCloneError: Невозможно отправить сообщение", error);
+        }
     };
 
     const receiveMessage = (event: MessageEvent) => {
